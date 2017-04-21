@@ -2,13 +2,15 @@
 
 @section('content')
 	
-	<div class="container">
-		<div class="col-md-6 col-md-offset-3" style="text-align: center">
+	<div class="container text-center">
+		<div class="col-md-6 col-md-offset-3">
 			<h2>Laramap</h2>
 			<br>
 		</div>
+
+		<div id="map">
 	</div>
-	<div id="map">
+	
 		
 	</div>
 

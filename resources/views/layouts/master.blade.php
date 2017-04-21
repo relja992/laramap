@@ -15,7 +15,7 @@
         @yield('content')
         <script crossorigin="anonymous" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" src="https://code.jquery.com/jquery-3.1.0.min.js">
         </script>
-        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRct-hCbD-X5xSjbrlQe8z74gzAPqMe-Q">
+        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRct-hCbD-X5xSjbrlQe8z74gzAPqMe-Q&libraries=places">
         </script>
 
         <script src="{{asset('js/script.js')}}"></script>
