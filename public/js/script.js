@@ -1,5 +1,5 @@
 var map;
-var myLatLng
+var myLatLng;
 
 $(document).ready(function(){
 
@@ -13,13 +13,16 @@ function geoLocationInit(){
 }
 
 function success(position){
-	console.log(position);
+	//console.log(position);
 	var latval = position.coords.latitude;
 	var lngval = position.coords.longitude;
 
+	console.log(latval, lngval);
+
 	myLatLng = new google.maps.LatLng(latval, lngval);
 	createMap(myLatLng);
-	nearbySearch(myLatLng, "school");
+	//nearbySearch(myLatLng, "school");
+	pretragaTacaka(latval, lngval);
 }
 
 function fail(){
@@ -31,9 +34,10 @@ function createMap(myLatLng){
 
 	map = new google.maps.Map(document.getElementById('map'), {
           center: myLatLng,
-          scrollwheel: false,
+          //scrollwheel: false,
           zoom: 12
         });
+
 	var marker = new google.maps.Marker({
 		position: myLatLng,
 	    map: map
@@ -78,6 +82,25 @@ function nearbySearch(myLatLng, type){
 		    }
 		}
 	}
+}
+//44.801085699999994
+//20.5218547
+
+function pretragaTacaka(sirina, duzina){
+	$.post('http://localhost:8000/api/pretraga', {lat:sirina, lng:duzina}, function(match){
+	//console.log(match);
+
+		$.each(match, function(i,val){
+			var tackaLat = val.sirina;
+			var tackaLng = val.duzina;
+			var tackaName = val.name;
+
+			var tLatLng = new google.maps.LatLng(tackaLat, tackaLng);
+			var tIcn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+			createMarker(tLatLng, tIcn, tackaName);
+		})
+	});
 }
 
 	
